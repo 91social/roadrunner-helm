@@ -45,8 +45,8 @@ Selector labels
 */}}
 {{- define "roadrunner-proxy.selectorLabels" -}}
 app: roadrunner-proxy
-app.kubernetes.io/name: {{ include "roadrunner-proxy.name" . }}
-app.kubernetes.io/instance: {{ .Release.Name }}
+# app.kubernetes.io/name: {{ include "roadrunner-proxy.name" . }}
+# app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
 
