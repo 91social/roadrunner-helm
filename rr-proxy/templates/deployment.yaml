@@ -1,0 +1,71 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: {{ include "rr-proxy.fullname" . }}
+  namespace: {{ .Values.namespace }}
+  labels:
+    {{- include "rr-proxy.labels" . | nindent 4 }}
+
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "rr-proxy.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels: 
+        {{- include "rr-proxy.labels" . | nindent 8 }}
+      
+
+    spec:
+      containers:
+        - name: roadrunner-client
+          image: "{{ .Values.global.container.image }}:{{ .Values.global.container.tag }}"
+          imagePullPolicy: Always
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+          port:
+            
+          env:
+            - name: JDBC_READ_URL
+              value: "{{ .Values.global.jdbc_read.host }}"
+            - name: JDBC_READ_DRIVER
+              value: "{{ .Values.global.jdbc_read.driver }}"
+            - name: JDBC_READ_USER
+              value: "{{ .Values.global.jdbc_read.username }}"
+            - name: JDBC_READ_PASSWORD
+              value: "{{ .Values.global.jdbc_read.password }}"
+            - name: JDBC_READ_MAXCONNS
+              value: "{{ .Values.global.jdbc_read.max_connections }}"
+            - name: JDBC_WRITE_URL
+              value: "{{ .Values.global.jdbc_write.host }}"
+            - name: JDBC_WRITE_DRIVER
+              value: "{{ .Values.global.jdbc_write.driver }}"
+            - name: JDBC_WRITE_USER
+              value: "{{ .Values.global.jdbc_write.username }}"
+            - name: JDBC_WRITE_PASSWORD
+              value: "{{ .Values.global.jdbc_write.password }}"
+            - name: JDBC_WRITE_MAXCONNS
+              value: "{{ .Values.global.jdbc_write.max_connections }}"
+            - name: JVM_MAX_SIZE
+              value: "{{ .Values.global.jvm.xmx }}"
+            - name: JVM_NEWGEN_MIN_SIZE
+              value: "{{ .Values.global.jvm.newgen_min }}"
+            - name: JVM_NEWGEN_MAX_SIZE
+              value: "{{ .Values.global.jvm.newgen_max }}"
+            - name: ENABLE_DUAL_PROTOCOL
+              value: "{{ .Values.global.protocol.enabled }}"
+            - name: HTTP_PORT
+              value: "{{ .Values.global.http_port.port }}"
+            - name: KAFKA_ENABLED
+              value: "{{ .Values.global.audit.kafka_enabled }}"
+            - name: INSTATS_URL
+              value: "{{ .Values.global.url.roadrunner_url }}"
+            - name: INSTATS_PORT
+              value: "{{ .Values.global.url.port }}"
+            - name: GRPC_TRACE
+              value: "all"
+            - name: GRPC_VERBOSITY
+              value: "debug"
+            - name: PROXY_ID
+              value: "{{ .Values.global.proxy.id }}"

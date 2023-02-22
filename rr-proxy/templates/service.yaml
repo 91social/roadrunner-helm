@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "rr-proxy.fullname" . }}
+  labels:
+    {{- include "rr-proxy.labels" . | nindent 4 }}
+
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.service_443.port }}
+      name: {{ .Values.service.service_443.name  }}
+      protocol: TCP
+      targetPort: 443
+    - port: {{ .Values.service.service_80.port }}
+      protocol: TCP
+      name: {{ .Values.service.service_80.name  }}
+      targetPort: 8080
+  selector:
+    {{- include "rr-proxy.selectorLabels" . | nindent 4 }}
+
+
+
