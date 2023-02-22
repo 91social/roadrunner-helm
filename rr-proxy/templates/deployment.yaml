@@ -1,20 +1,20 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: {{ include "rr-proxy.fullname" . }}
+  name: {{ include "roadrunner-proxy.fullname" . }}
   namespace: {{ .Values.namespace }}
   labels:
-    {{- include "rr-proxy.labels" . | nindent 4 }}
+    {{- include "roadrunner-proxy.labels" . | nindent 4 }}
 
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      {{- include "rr-proxy.selectorLabels" . | nindent 6 }}
+      {{- include "roadrunner-proxy.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       labels: 
-        {{- include "rr-proxy.labels" . | nindent 8 }}
+        {{- include "roadrunner-proxy.labels" . | nindent 8 }}
       
 
     spec:

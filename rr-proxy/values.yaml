@@ -17,7 +17,7 @@ serviceAccount:
   annotations: {}
   # The name of the service account to use.
   # If not set and create is true, a name is generated using the fullname template
-  name: "test-roadrunner"
+  name: ""
 
 podAnnotations: {}
 
@@ -35,11 +35,11 @@ securityContext: {}
 service:
   type: LoadBalancer
   service_443:
-    name: "https"
-    port: "443"
+    name: ""
+    port: 443
   service_80:
-    name: "http"
-    port: "80"
+    name: ""
+    port: 80
 
 ingress:
   enabled: false
@@ -63,8 +63,8 @@ resources:
   # resources, such as Minikube. If you do want to specify resources, uncomment the following
   # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
    limits:
-     cpu: 1024m
-     memory: 2048Mi
+     cpu: ""
+     memory: "" 
 
 
 autoscaling:
@@ -82,38 +82,38 @@ affinity: {}
 
 
 global:
-  env: test
+  env:               #test
   container:
-     image: datasahi/roadrunnr-proxy
-     tag: '20230219'
+     image:                 #datasahi/roadrunnr-proxy
+     tag:                      #'20230219'
 
   jvm:
-    xmx: "1024m"
-    newgen_min: "256m"
-    newgen_max: "512m"
+    xmx:                   #"1024m"
+    newgen_min:            #"256m"
+    newgen_max:            #"512m"
   jdbc_read:
-    host: 'jdbc:postgresql://testing-do-user-5069280-0.b.db.ondigitalocean.com:25061/rrproxy?sslmode=require'
-    username: 'roadrunner-proxy'
-    password: 'AVNS_jKXVi9V3yuQvw0W7-qA'
-    driver: "org.postgresql.Driver"
-    max_connections: '1'
+    host:                  #jdbc url
+    username:                 
+    password:                 
+    driver:                           #"org.postgresql.Driver"
+    max_connections: 
   jdbc_write:
-    host: 'jdbc:postgresql://testing-do-user-5069280-0.b.db.ondigitalocean.com:25061/rrproxy?sslmode=require'
-    username: 'roadrunner-proxy'
-    password: 'AVNS_jKXVi9V3yuQvw0W7-qA'
-    driver: "org.postgresql.Driver"
-    max_connections: '1'
+    host: 
+    username: 
+    password: 
+    driver: 
+    max_connections: 
   http_port:
-    port: '8080'
+    port: 
   audit:
-    kafka_enabled: 'false'
+    kafka_enabled:                           #'false'
   url:
-    roadrunner_url: '139.59.49.203'
-    port: '5050'
+    roadrunner_url: 
+    port: 
   proxy:
     id: ''
   protocol:
-    enabled: 'true'
+    enabled:                                 #'true'
 
       
 

@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "rr-proxy.fullname" . }}
+  name: {{ include "roadrunner-proxy.fullname" . }}
   labels:
-    {{- include "rr-proxy.labels" . | nindent 4 }}
+    {{- include "roadrunner-proxy.labels" . | nindent 4 }}
 
 spec:
   type: {{ .Values.service.type }}
@@ -17,7 +17,7 @@ spec:
       name: {{ .Values.service.service_80.name  }}
       targetPort: 8080
   selector:
-    {{- include "rr-proxy.selectorLabels" . | nindent 4 }}
+    {{- include "roadrunner-proxy.selectorLabels" . | nindent 4 }}
 
 
 
