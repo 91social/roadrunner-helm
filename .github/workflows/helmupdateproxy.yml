@@ -20,19 +20,21 @@ jobs:
 
       - name: Install Helm
         uses: azure/setup-helm@v3
+
+      - name: run the commands
         run: | 
           - mkdir -p ./rr-proxy
           - ls ./rr-proxy
           - mkdir -p ./rr-proxy/release
           - "echo \"User-Agent: *\nDisallow: /\" > ./rr-proxy/robots.txt"
-          - helm dependency update helm/pci
-          - helm package helm/pci
+          - helm dependency update rr-proxy
+          - helm package rr-proxy
           - cp -r index.html ./rr-proxy/release
-          - helm repo index --url https://${CI_PROJECT_NAMESPACE}.gitlab.io/${CI_PROJECT_NAME}/release .
+          - helm repo index --url https://91social.github.io/roadrunner-helm/release .
           - mv index.yaml ./rr-proxy/release
           - mv *.tgz ./rr-proxy/release
           - "pwd"
-          - "echo  https://${CI_PROJECT_NAMESPACE}.gitlab.io/${CI_PROJECT_NAME}/release"
+          - "echo  https://91social.github.io/roadrunner-helm/release"
           - "ls"
           - "ls ./rr-proxy"
           - "cat ./rr-proxy/release/index.yaml"
