@@ -27,7 +27,7 @@ jobs:
             ls ./rr-proxy
             mkdir -p ./rr-proxy/release
 
-            "echo \"User-Agent: *\nDisallow: /\" > ./robots.txt"
+            "echo \"User-Agent: *\nDisallow: /\" > robots.txt"
             helm dependency update rr-proxy
             helm package rr-proxy
             cp -r index.html ./rr-proxy/release
