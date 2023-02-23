@@ -39,8 +39,27 @@ jobs:
         id: cmd
         with:
          run: cat index.yaml
+      - name: Use the Upload Artifact GitHub Action
+        uses: actions/upload-artifact@v2
+        with: 
+          name: assets-for-download
+          path: roadrunner-proxy-0.1.0.tgz 
+
+      - name: Download Artifact
+        uses: actions/download-artifact@v2
+        with:
+         name: assets-for-download
+      - name: unzip artifact for deployment
+        uses: montudor/action-zip@v1
+        with:
+          args: unzip -qq roadrunner-proxy-0.1.0.tgz -d roadrunner-proxy
 
       - name: Run chart-releaser
         uses: helm/chart-releaser-action@v1.5.0
         env:
           CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+      
+      if: github.ref == 'refs/heads/develop
+
+
+     
