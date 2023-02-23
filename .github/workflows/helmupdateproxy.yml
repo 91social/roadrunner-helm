@@ -24,10 +24,11 @@ jobs:
       - name: run the commands
         run: | 
             mkdir -p ./rr-proxy
-            ls ./rr-proxy
+            ls
             mkdir -p ./rr-proxy/release
-            touch robots.txt
-            "echo \"User-Agent: *\nDisallow: /\" > robots.txt"
+            "pwd"
+            "ls"
+           "echo \"User-Agent: *\nDisallow: /\" > robots.txt"
             helm dependency update rr-proxy
             helm package rr-proxy
             cp -r index.html ./rr-proxy/release
