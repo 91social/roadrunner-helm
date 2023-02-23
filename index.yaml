@@ -9,6 +9,6 @@ entries:
     name: roadrunner-proxy
     type: application
     urls:
-    - https://91social.github.io/roadrunner-helm/
+    - https://91social.github.io/roadrunner-helm/roadrunner-proxy-0.1.0.tgz
     version: 0.1.0
 generated: "2023-02-23T16:25:14.605366671+05:30"
