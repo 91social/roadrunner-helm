@@ -35,7 +35,11 @@ jobs:
             mv *.tgz ./rr-proxy/roadrunner-helm
             "pwd"
             "ls"
-            "cat index.yaml"
+      - uses: mathiasvr/command-output@v1
+        continue-on-error: true
+        id: cmd
+        with:
+         run: cat index.yaml
 
       - name: Run chart-releaser
         uses: helm/chart-releaser-action@v1.5.0
