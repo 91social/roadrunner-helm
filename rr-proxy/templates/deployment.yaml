@@ -27,15 +27,15 @@ spec:
           port:
             
           env:
-            - name: JDBC_READ_URL
+            - name: DATASOURCES_NEW_TYPE
               value: "{{ .Values.global.jdbc_read.host }}"
-            - name: JDBC_READ_DRIVER
+            - name: DATASOURCES_NEW_JDBC_URL
               value: "{{ .Values.global.jdbc_read.driver }}"
-            - name: JDBC_READ_USER
+            - name: DATASOURCES_NEW_DRIVER_CLASS_NAME
               value: "{{ .Values.global.jdbc_read.username }}"
-            - name: JDBC_READ_PASSWORD
+            - name: DATASOURCES_NEW_PASSWORD
               value: "{{ .Values.global.jdbc_read.password }}"
-            - name: JDBC_READ_MAXCONNS
+            - name: DATASOURCES_NEW_MAX_CONNECTIONS
               value: "{{ .Values.global.jdbc_read.max_connections }}"
             - name: JDBC_WRITE_URL
               value: "{{ .Values.global.jdbc_write.host }}"
