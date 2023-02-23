@@ -85,7 +85,7 @@ global:
   env:               #test
   container:
      image:                 #datasahi/roadrunnr-proxy
-     tag:                      #'20230220'
+     tag:                      #'2023023'
 
   jvm:
     xmx:                   #"1024m"
