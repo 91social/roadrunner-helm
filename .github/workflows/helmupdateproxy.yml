@@ -30,11 +30,10 @@ jobs:
             "ls"
             helm dependency update rr-proxy
             helm package rr-proxy
-            helm repo index --url https://91social.github.io/roadrunner-helm/roadrunner-helm .
-            mv index.yaml ./rr-proxy/roadrunner-helm
+            helm repo index --url https://91social.github.io/roadrunner-helm/ .
+            mv index.yaml ./rr-proxy/r
             mv *.tgz ./rr-proxy/roadrunner-helm
             "pwd"
-            "echo  https://91social.github.io/roadrunner-helm/roadrunner-helm"
             "ls"
             "ls ./rr-proxy"
             "cat ./rr-proxy/roadrunner-helm/index.yaml"
