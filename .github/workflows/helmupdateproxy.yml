@@ -20,6 +20,22 @@ jobs:
 
       - name: Install Helm
         uses: azure/setup-helm@v3
+        run: | 
+          - mkdir -p ./rr-proxy
+          - ls ./rr-proxy
+          - mkdir -p ./rr-proxy/release
+          - "echo \"User-Agent: *\nDisallow: /\" > ./rr-proxy/robots.txt"
+          - helm dependency update helm/pci
+          - helm package helm/pci
+          - cp -r index.html ./rr-proxy/release
+          - helm repo index --url https://${CI_PROJECT_NAMESPACE}.gitlab.io/${CI_PROJECT_NAME}/release .
+          - mv index.yaml ./rr-proxy/release
+          - mv *.tgz ./rr-proxy/release
+          - "pwd"
+          - "echo  https://${CI_PROJECT_NAMESPACE}.gitlab.io/${CI_PROJECT_NAME}/release"
+          - "ls"
+          - "ls ./rr-proxy"
+          - "cat ./rr-proxy/release/index.yaml"
 
       - name: Run chart-releaser
         uses: helm/chart-releaser-action@v1.5.0
