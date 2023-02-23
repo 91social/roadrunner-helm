@@ -3,12 +3,12 @@ entries:
   roadrunner-proxy:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2023-02-23T13:53:08.170165452+05:30"
+    created: "2023-02-23T14:17:47.764283983+05:30"
     description: A Helm chart for Kubernetes
-    digest: 55d65cbb3815279fd88a2963102fe21639a8d4cd44f1a0077b16b60b8628165f
+    digest: 0d16fe4a118ae74fad2c14c96c575e74805f95abafed3d7d2ca377a5fe51d17e
     name: roadrunner-proxy
     type: application
     urls:
-    - ^Ctps:/91social.github.io/roadrunner-helm/roadrunner-proxy-0.1.0.tgz
+    - https://91social.github.io/roadrunner-helm/roadrunner-proxy-0.1.0.tgz
     version: 0.1.0
-generated: "2023-02-23T13:53:08.169435185+05:30"
+generated: "2023-02-23T14:17:47.763591515+05:30"
