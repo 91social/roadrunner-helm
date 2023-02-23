@@ -30,7 +30,6 @@ jobs:
             "ls"
             helm dependency update rr-proxy
             helm package rr-proxy
-            cp -r index.html ./rr-proxy/release
             helm repo index --url https://91social.github.io/roadrunner-helm/release .
             mv index.yaml ./rr-proxy/release
             mv *.tgz ./rr-proxy/release
