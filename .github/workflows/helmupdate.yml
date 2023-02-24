@@ -25,6 +25,15 @@ jobs:
 
       - name: Install Helm
         uses: azure/setup-helm@v3
+      - name: run the commands
+        run: | 
+            "ls"
+            "pwd"
+            helm dependency update rr-proxy
+            helm package rr-proxy
+            helm repo index --url https://91social.github.io/roadrunner-helm/ .
+            "pwd"
+            "ls -la "
 
       - name: Run chart-releaser
         uses: helm/chart-releaser-action@v1.5.0
