@@ -31,7 +31,8 @@ jobs:
             helm dependency update rr-proxy
             helm package rr-proxy
             helm repo index --url https://91social.github.io/roadrunner-helm/ .
-            git branch
+            git branch -a
+            git status
             git add .
             git commit -m " all changes added"
             git push 
