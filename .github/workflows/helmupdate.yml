@@ -21,7 +21,6 @@ jobs:
       - name: Configure Git
         run: |
           git config user.name "$GITHUB_ACTOR"
-          git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
 
       - name: Install Helm
         uses: azure/setup-helm@v3
@@ -32,8 +31,10 @@ jobs:
             helm dependency update rr-proxy
             helm package rr-proxy
             helm repo index --url https://91social.github.io/roadrunner-helm/ .
-            "pwd"
-            "ls -la "
+            git branch
+            git add .
+            git commit -m " all changes added"
+            git push 
 
       - name: Run chart-releaser
         uses: helm/chart-releaser-action@v1.5.0
